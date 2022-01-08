@@ -21,4 +21,4 @@ jobs:
         pip install pylint
     - name: Lint with pylint
       run: |
-        python lint_test.py
+        python example.py
