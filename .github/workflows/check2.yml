@@ -1,16 +1,13 @@
 name: Deployment-of-python-app
-on: [pull_request]
+on: [push]
 jobs:
   finaltask:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
       uses: actions/checkout@v2
-    - name: detect-secrets
-      uses: reviewdog/action-detect-secrets@master
-      with:
-        github_token: ${{ secrets.github_token }}
-        reporter: github-pr-review # Change reporter. 
+    - name: Detect secrets with Talisman in incoming commits
+      uses: carhartl/talisman-secrets-scan-action@v1.0.1
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with: 
