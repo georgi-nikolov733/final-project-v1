@@ -33,5 +33,5 @@ jobs:
         pip install pylint-exit
     - name: Lint with pylint
       run: |
-        python lint_test.py || pylint-exit
+        python lint_test.py || pylint-exit $?
     
