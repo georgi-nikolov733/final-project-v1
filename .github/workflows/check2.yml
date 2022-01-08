@@ -20,7 +20,7 @@ jobs:
         pip install pylint
     - name: Lint with pylint
       run: |
-        python example.py
+        python lint_test.py
     - name: Detect Secrets
       uses: RobertFischer/detect-secrets-action@v2.0.0
     - name: Commit back .secrets.baseline (if it was missing)
