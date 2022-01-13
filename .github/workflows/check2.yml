@@ -53,21 +53,8 @@ jobs:
       run: |
         python --version
         pycodestyle *.py
-  SAST:
-    needs: cred-check   
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build: 
-    needs: [lint, style, SAST]
+    needs: [lint, style]
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
@@ -96,4 +83,17 @@ jobs:
       run: |
         python --version 
         python3 -m doctest example.py
+  SAST:
+    needs: unit-test  
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     
