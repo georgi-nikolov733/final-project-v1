@@ -63,12 +63,14 @@ jobs:
       uses: actions/setup-python@v2
       with: 
         python-version: 3.9
-    - run: ls -a
+    - run: |
+            ls -a
+            python example.py > result.html
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: example.py
-        path: example.py
+        name: result.html
+        path: result.html
   unit-test:
     needs: build
     runs-on: ubuntu-latest
@@ -81,8 +83,9 @@ jobs:
         python-version: 3.9
     - name: Unit testing
       run: |
-        python --version 
-        python3 -m doctest example.py
+           ls -a
+           python --version 
+           python3 -m doctest example.py
   SAST:
     needs: unit-test  
     runs-on: ubuntu-latest
