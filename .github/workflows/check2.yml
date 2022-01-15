@@ -108,7 +108,7 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
   docker:
-    needs: unit-test
+    needs: get-artefact
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
