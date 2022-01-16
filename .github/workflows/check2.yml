@@ -149,7 +149,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
        cd kustomize/base
-       kustomize edit set image final-project-v1=$DOCKER_USERNAME/app:$GITHUB_SHA
+       kustomize edit set image final-project-v1=$DOCKER_USERNAME/app:latest
        cat kustomization.yaml
         
     - name: Commit files
