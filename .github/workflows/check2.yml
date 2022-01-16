@@ -129,7 +129,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.sha }}, latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:lastest,
   deploy:
     name: deploy
     runs-on: ubuntu-latest
@@ -149,7 +149,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run: |
        cd kustomize/base
-       kustomize edit set image final-project-v1=$DOCKER_USERNAME/app:$GITHUB_SHA
+       kustomize edit set image final-project-v1=$DOCKER_USERNAME/app:latest
        cat kustomization.yaml
         
     - name: Commit files
