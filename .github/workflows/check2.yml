@@ -129,7 +129,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:${{ github.sha }}, latest
   deploy:
     name: deploy
     runs-on: ubuntu-latest
