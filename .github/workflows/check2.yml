@@ -1,4 +1,4 @@
-name: Deployment-of-python-app
+name: Pipeline-of-python-app
 on:
   push:
     branches: [ master ]
@@ -66,25 +66,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  build: 
-    needs: [lint, style, SAST]
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out repository code
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with: 
-        python-version: 3.9
-    - run: |
-            ls -a
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: example.py
-        path: example.py
   unit-test:
-    needs: build
+    needs: [lint, style, SAST]
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
@@ -97,18 +80,8 @@ jobs:
       run: |
            python --version 
            python3 -m doctest example.py
-  get-artefact:
-    needs: unit-test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v2
-      with:
-        name: example.py
-    - name: Display structure of downloaded files
-      run: ls -R
   docker:
-    needs: get-artefact
+    needs: unit-test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 
@@ -130,34 +103,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    needs: docker
-
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Setup Kustomize
-      uses: imranismail/setup-kustomize@v1
-
-    - name: Update Kubernetes resources
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run: |
-       cd kustomize/base
-       kustomize edit set image final-project-v1=$DOCKER_USERNAME/app:latest
-       cat kustomization.yaml
-        
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git commit -am "Bump docker tag"
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+  
     
