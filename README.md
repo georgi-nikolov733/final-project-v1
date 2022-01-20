@@ -60,7 +60,7 @@ The unit-testing is done by using [doctest](https://docs.python.org/3/library/do
 
 ## Step 4
 
-Building a docker image and uploading it to [DockerHub](https://hub.docker.com/). This is done by using the official Github Action published by [Docker](https://github.com/marketplace/actions/build-and-push-docker-images).
+Building a docker image and uploading it to [DockerHub](https://hub.docker.com/). This is done by using the official Github Action [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images) published by Docker.
 
 
 
