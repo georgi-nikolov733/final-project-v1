@@ -2,15 +2,13 @@
 
 A basic Python app used to depomstrate the CI/CD pipeline.
 
-## Step 1 Checking for credentials:
+## Step 1. Checking for credentials:
 
 Using the pre-build [Easy detect-secrets](https://github.com/marketplace/actions/easy-detect-secrets) action to check for hardcoded credential.
 
 The credentials that the actions checks for are listed in the .secrets.baseline file in the repository.
 
-## Step 2
-
-Consisting of 3 different parts:
+## Step 2. Lint, style and SAST:
 
 #### Linting 
 
@@ -47,7 +45,7 @@ Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using 
 
 The Static Application Security Testing is done by using the pre-build Github Action [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan).
 
-## Step 3
+## Step 3. Unit Testing:
 
 The unit-testing is done by using [doctest](https://docs.python.org/3/library/doctest.html).
 
@@ -58,7 +56,7 @@ The unit-testing is done by using [doctest](https://docs.python.org/3/library/do
            python3 -m doctest example.py
 ```
 
-## Step 4
+## Step 4. Building and uploading the Docker image:
 
 Building a docker image and uploading it to [DockerHub](https://hub.docker.com/). This is done by using the official Github Action [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images) published by Docker.
 
