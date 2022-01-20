@@ -12,7 +12,7 @@ The credentials that the actions checks for are listed in the .secrets.baseline 
 
 #### Linting 
 
-Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using to install [pylint](https://pylint.org/)
+Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using it to install [pylint](https://pylint.org/)
 
 ```yaml
 - name: Install dependencies
@@ -27,7 +27,7 @@ Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using 
 
 #### Style
 
-Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using to install [pycodestyle](https://pypi.org/project/pycodestyle/)
+Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using it to install [pycodestyle](https://pypi.org/project/pycodestyle/)
 
 ```yaml
 - name: Install dependencies
@@ -43,7 +43,7 @@ Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using 
 
 #### Static Application Security Testing (SAST)
 
-The Static Application Security Testing is done by using the pre-build Github Action [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan).
+The Static Application Security Testing is done by using [SonarCloud](sonarcloud.io) with the pre-build Github Action [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan).
 
 ## Step 3. Unit Testing:
 
