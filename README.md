@@ -45,11 +45,11 @@ Installing the package manager [pip](https://pip.pypa.io/en/stable/) then using 
 
 #### Static Application Security Testing (SAST)
 
-The Static Application Security Testing is done by using the pre-build Github Action [SonarCloud_Scan] (https://github.com/marketplace/actions/sonarcloud-scan).
+The Static Application Security Testing is done by using the pre-build Github Action [SonarCloud Scan](https://github.com/marketplace/actions/sonarcloud-scan).
 
 ## Step 3
 
-The Unit-test step is done using [doctest](https://docs.python.org/3/library/doctest.html).
+The unit-testing is done by using [doctest](https://docs.python.org/3/library/doctest.html).
 
 ```yaml
 - name: Unit testing
