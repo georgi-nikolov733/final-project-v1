@@ -6,7 +6,7 @@ A basic Python app used to depomstrate the CI/CD pipeline.
 
 Using the pre-build [Easy detect-secrets](https://github.com/marketplace/actions/easy-detect-secrets) action to check for hardcoded credential.
 
-The credentials that the actions checks for are listed in the .secrets.baseline file in the repository.
+The credentials that the actions checks for are listed in the [.secrets.baseline](https://github.com/georgi-nikolov733/final-project-v1/blob/staging/.secrets.baseline) file in the repository.
 
 ## Step 2. Lint, style and SAST:
 
