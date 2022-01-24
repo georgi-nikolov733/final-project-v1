@@ -1,6 +1,6 @@
 # Example App
 
-A basic Python app used to depomstrate the CI/CD pipeline.
+A basic Python app used to demonstrate the CI/CD pipeline.
 
 ## Step 1. Checking for credentials:
 
